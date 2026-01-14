@@ -1,24 +1,26 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import Phaser from "phaser";
+import gameConfig from "./config/gameConfig";
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+// Import scenes
+import BootScene from "./scenes/BootScene";
+import LoginScene from "./scenes/LoginScene";
+import ProfileScene from "./scenes/ProfileScene";
+import WorldScene from "./scenes/WorldScene";
+import PrisonScene from "./scenes/PrisonScene";
+import BossFightScene from "./scenes/BossFightScene";
+import ArenaScene from "./scenes/ArenaScene";
+import ExitScene from "./scenes/ExitScene";
 
-setupCounter(document.querySelector('#counter'))
+// Add scenes
+gameConfig.scene = [
+  BootScene,
+  LoginScene,
+  ProfileScene,
+  WorldScene,
+  PrisonScene,
+  BossFightScene,
+  ArenaScene,
+  ExitScene,
+];
+
+new Phaser.Game(gameConfig);
